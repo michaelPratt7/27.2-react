@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import "./App.css";
 import RecipeCreate from "./RecipeCreate";
 import RecipeList from "./RecipeList";
-import RecipeData from "./RecipeData"
+import RecipeData from "./RecipeData";
+import RecipeView from "./RecipeView";
 
 function App() {
   const [recipes, setRecipes] = useState(RecipeData);
   const [posts, setPosts] = useState([]);
-  const addPost = (newPost) => setPosts([...posts, newPost]);
-  const deletePost = (postId) => {
-    const updatedPosts = posts.filter((post) => post.id !== postId);
-    setPosts(updatedPosts);
+  const addRecipe = (newRecipe) => setRecipes([...recipes, newRecipe]);
+  const deleteRecipe = (recipeId) => {
+    const updatedRecipes = recipes.filter((recipe) => recipe.id !== recipeId);
+    setRecipes(updatedRecipes);
   }
 
   // TODO: Add the ability for the <RecipeList /> component to list and delete an existing recipe.
@@ -20,8 +21,8 @@ function App() {
   return (
     <div className="App">
       <header><h1>Delicious Food Recipes</h1></header>
-      <RecipeList posts={posts} onDeletePost={deletePost} />
-      <RecipeCreate onAddPost={addPost} newRecipe={recipes} />
+      <RecipeList recipes={recipes} onDeleteRecipe={deleteRecipe} />
+      <RecipeCreate onAddRecipe={addRecipe} newRecipe={recipes} />
     </div>
   );
 }

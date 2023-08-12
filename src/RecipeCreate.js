@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function RecipeCreate({onAddPost, newRecipe}) {
+function RecipeCreate({onAddRecipe, newRecipe}) {
   const initialFormState = {
     name: "",
     cuisine: "",
@@ -9,19 +9,19 @@ function RecipeCreate({onAddPost, newRecipe}) {
     preparation: "",
   }
 
-  const [formData, setFormData] = useState({...initialFormState})
+  const [formData, setFormData] = useState(initialFormState)
   
-  const handleFormChange = ({target}) => {
+  const handleFormChange = (event) => {
     setFormData({
       ...formData,
-      [target.name]: target.value
+      [event.target.name]: event.target.value
     })
   }
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    onAddPost({formData});
-    setFormData(...initialFormState);
+    onAddRecipe(formData);
+    setFormData(initialFormState);
   }
 
   // TODO: When the form is submitted, a new recipe should be created, and the form contents cleared.
@@ -34,57 +34,63 @@ function RecipeCreate({onAddPost, newRecipe}) {
         <tbody>
           <tr>
             <td htmlFor="name">
-              Name
+              
               <input 
                id="name"
                name="name"
                type="text"
+               placeholder="Name"
                onChange={handleFormChange}
-               value={newRecipe.name}
+               value={formData.name}
                />
             </td>
             <td htmlFor="cuisine">
-              Cuisine
+              
               <input
                id="cuisine"
                name="cuisine"
                type="text"
+               placeholder="Cuisine"
                onChange={handleFormChange}
-               value={newRecipe.cuisine}
+               value={formData.cuisine}
                />
             </td>
             <td htmlFor="photo">
-              Photo
+              
               <input
                id="photo"
                name="photo"
+               role="img"
                type="url"
+               placeholder="URL"
                onChange={handleFormChange}
-               value={newRecipe.photo}
-               />
+               value={formData.photo}
+                />
             </td>
             <td htmlFor="ingredients">
-              Ingredients
+              
               <textarea
                id="ingredients"
                name="ingredients"
                type="text"
+               placeholder="Ingredients"
                onChange={handleFormChange}
-               value={newRecipe.ingredients}
+               value={formData.ingredients}
                />
             </td>
             <td htmlFor="preparation">
-              Preparation
+              
               <textarea
                id="preparation"
                name="preparation"
                type="text"
+               placeholder="Preparation"
                onChange={handleFormChange}
-               value={newRecipe.preparation}
+               value={formData.preparation}
                />
             </td>
             <td>
-              Actions
+              
               <button type="submit">Create</button>
             </td>
           </tr>

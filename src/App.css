@@ -11,6 +11,9 @@ label {
 
 header {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  font-family: 'Playfair Display SC';
+  text-align: center;
+  font-size: 64px;
 }
 
 /* typography */
@@ -54,7 +57,45 @@ table {
   text-overflow: ellipsis;
 }
 
-/* Column Size for thead */
+tbody:nth-child(odd) {
+  background-color: #fff0c7;
+}
 
+/* Column Size for thead */
+thead:nth-child(-n+3) {
+  width: 10%;
+}
+thead:nth-child(6) {
+  width: 10%;
+}
+thead:nth-child(4) {
+  width: 30%;
+}
+thead:nth-child(5) {
+  width: 30%;
+}
 
 /* Column size for tbody */
+tbody:nth-child(-n+3) {
+  width: 10%;
+}
+tbody:nth-child(6) {
+  width: 10%;
+}
+tbody:nth-child(4) {
+  width: 30%;
+}
+tbody:nth-child(5) {
+  width: 30%;
+}
+
+/* Image Scale */
+
+img {
+  height: 100%;
+  width: 100%;
+}
+
+.scale-down {
+  object-fit: scale-down;
+}
